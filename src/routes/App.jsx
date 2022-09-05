@@ -7,9 +7,16 @@ import NotFound from '../containers/NotFound';
 import Payment from '../containers/Payment';
 import Success from '../containers/Success'
 import Layout from '../components/Layout';
+import AppContext from '../context/AppContext';
+import useInitialState from '../hooks/useInitialState';
 function App() {
+
+  const initialState = useInitialState()
+
   return (
-    <BrowserRouter>
+
+    <AppContext.Provider>
+        <BrowserRouter>
         <Layout>
         <Routes>
             <Route exact path='/' element={<Home />} />
@@ -22,6 +29,9 @@ function App() {
         </Layout>
 
     </BrowserRouter>
+  
+    </AppContext.Provider>
+
   )
 }
 
