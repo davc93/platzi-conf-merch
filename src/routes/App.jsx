@@ -15,7 +15,7 @@ function App() {
 
   return (
 
-    <AppContext.Provider>
+    <AppContext.Provider value={initialState}>
         <BrowserRouter>
         <Layout>
         <Routes>

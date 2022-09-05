@@ -19,13 +19,14 @@ const useInitialState = ()=>{
 
         setState({
             ...state,
-            cart: state.cart.filter(item=>item.id !== payload)
+            cart: state.cart.filter(item=>item.id !== payload.id)
         })
     }
     return {
         addToCart,
         removeFromCart,
         state
+
     }
 }
 
