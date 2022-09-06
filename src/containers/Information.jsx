@@ -1,13 +1,15 @@
 import React from 'react';
 import '../styles/components/Information.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 function Information() {
 
   const { state, addToBuyer } = React.useContext(AppContext);
+  const navigate = useNavigate();
   const form = React.useRef(null);
   const { cart } = state;
+
 
   const handleSubmit = () => {
     const formData = new FormData(form.current);
@@ -23,9 +25,10 @@ function Information() {
       'phone':formData.get('phone')
     }
     addToBuyer(buyer);
+    navigate('/checkout/payment')
   }
   return (
-    <div className="Informatin">
+    <div className="Information">
       <div className="Information-content">
         <div className="Information-head">
           <h2>Informacion de contacto</h2>

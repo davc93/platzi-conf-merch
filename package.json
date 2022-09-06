@@ -19,8 +19,11 @@
   "author": "Diego Vegrara <davc93@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@react-google-maps/api": "^2.12.2",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-paypal-button-v2": "^2.6.3",
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
