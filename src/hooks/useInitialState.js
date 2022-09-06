@@ -2,14 +2,14 @@ import React from "react";
 
 import initialState from '../initialState';
 
-const useInitialState = ()=>{
+const useInitialState = () => {
 
     const [state, setState] = React.useState(initialState);
     const addToCart = (payload) => {
 
         setState({
             ...state,
-            cart:[
+            cart: [
                 ...state.cart,
                 payload
             ]
@@ -19,13 +19,23 @@ const useInitialState = ()=>{
 
         setState({
             ...state,
-            cart: state.cart.filter(item=>item.id !== payload.id)
+            cart: state.cart.filter(item => item.id !== payload.id)
+        })
+    }
+    const addToBuyer = (payload) => {
+        setState({
+            ...state,
+            buyer: [
+                ...state.buyer,
+                payload
+            ]
         })
     }
     return {
         addToCart,
         removeFromCart,
-        state
+        state,
+        addToBuyer
 
     }
 }

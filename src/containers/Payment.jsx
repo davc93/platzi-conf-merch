@@ -1,5 +1,6 @@
-import React from 'react'
-import '../styles/components/Payment.css'
+import React from 'react';
+import '../styles/components/Payment.css';
+
 function Payment() {
   return (
     <div className="Payment">
@@ -10,7 +11,7 @@ function Payment() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Payment
+export default Payment;

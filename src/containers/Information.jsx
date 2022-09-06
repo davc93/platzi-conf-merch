@@ -1,7 +1,29 @@
-import React from 'react'
-import '../styles/components/Information.css'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import '../styles/components/Information.css';
+import { Link } from 'react-router-dom';
+import AppContext from '../context/AppContext';
+
 function Information() {
+
+  const { state, addToBuyer } = React.useContext(AppContext);
+  const form = React.useRef(null);
+  const { cart } = state;
+
+  const handleSubmit = () => {
+    const formData = new FormData(form.current);
+    const buyer = {
+      'name': formData.get('name'),
+      'email': formData.get('email'),
+      'address':formData.get('address'),
+      'apto':formData.get('apto'),
+      'city':formData.get('city'),
+      'country':formData.get('country'),
+      'state':formData.get('state'),
+      'cp':formData.get('cp'),
+      'phone':formData.get('phone')
+    }
+    addToBuyer(buyer);
+  }
   return (
     <div className="Informatin">
       <div className="Information-content">
@@ -9,44 +31,49 @@ function Information() {
           <h2>Informacion de contacto</h2>
         </div>
         <div className="Information-form">
-          <form action="">
-            <input type="text" placeholder='Nombre Completo' name='name'/>
-            <input type="text" placeholder='Correo Electronico' name='email'/>
-            <input type="text" placeholder='Dirección' name='address'/>
-            <input type="text" placeholder='apto' name='apto'/>
-            <input type="text" placeholder='Ciudad' name='city'/>
-            <input type="text" placeholder='País' name='country'/>
-            <input type="text" placeholder='Región' name='state'/>
-            <input type="text" placeholder='Código postal' name='cp'/>
-            <input type="text" placeholder='Teléfono' name='phone'/>
+          <form ref={(form)}>
+            <input type="text" placeholder="Nombre Completo" name="name" />
+            <input type="text" placeholder="Correo Electronico" name="email" />
+            <input type="text" placeholder="Dirección" name="address" />
+            <input type="text" placeholder="apto" name="apto" />
+            <input type="text" placeholder="Ciudad" name="city" />
+            <input type="text" placeholder="País" name="country" />
+            <input type="text" placeholder="Región" name="state" />
+            <input type="text" placeholder="Código postal" name="cp" />
+            <input type="text" placeholder="Teléfono" name="phone" />
 
           </form>
         </div>
         <div className="Information-buttons">
           <div className="Information-back">
-            Regresar
+            <Link to="/checkout">
+              Regresar
+            </Link>
           </div>
           <div className="Information-next">
-          <Link to='/checkout/payment'>
-          Pagar
+            <button type='button' onClick={handleSubmit}>
+              Pagar
 
-          </Link>
-          
+            </button>
+
           </div>
         </div>
       </div>
       <div className="Information-sidebar">
-        <div className="Information-item">
-          <div className="Information-element">
-            <h4>
-              Item Name
-            </h4>
-            <span>$10</span>
+        {cart.map((item) => {
+          <div className="Information-item">
+            <div className="Information-element">
+              <h4>
+                {item.title}
+              </h4>
+              <span>${item.price}</span>
+            </div>
           </div>
-        </div>
+        })}
+
       </div>
     </div>
-  )
+  );
 }
 
-export default Information
+export default Information;

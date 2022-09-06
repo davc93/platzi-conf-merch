@@ -1,5 +1,6 @@
-import React from 'react'
-import '../styles/components/Success.css'
+import React from 'react';
+import '../styles/components/Success.css';
+
 function Success() {
   return (
     <div className="Success">
@@ -11,7 +12,7 @@ function Success() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Success
+export default Success;
