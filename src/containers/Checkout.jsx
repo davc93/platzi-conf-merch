@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import '../styles/components/Checkout.css';
-
+import {Helmet} from 'react-helmet'
 function Checkout() {
   const { state, removeFromCart } = React.useContext(AppContext);
   const { cart } = state;
@@ -16,7 +16,11 @@ function Checkout() {
     return sum;
   };
   return (
-    <div className="Checkout">
+    <React.Fragment>
+      <Helmet>
+        <title>Lista de pedidos - platzi conf</title>
+      </Helmet>
+      <div className="Checkout">
       <div className="Checkout-content">
         {cart.length > 0 ? <h3>Lista de pedidos</h3> : <h3>Agregar algun producto</h3> }
         {cart.map((item) => (
@@ -48,6 +52,8 @@ function Checkout() {
       )}
 
     </div>
+
+    </React.Fragment>
   );
 }
 
